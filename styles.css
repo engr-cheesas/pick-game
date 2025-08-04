@@ -4,27 +4,43 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: rgb(209, 255, 240);
+    margin: 0;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.score-container {
+    font-size: 20px;
 }
 
 .results-container {
     display: flex;
-    gap: 1in;
     margin: 30px;
+    gap: 20px;
 }
 
-.human-pick, .computer-pick {
+.player-pick-container, .computer-pick-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     width: 200px;
     height: 200px;
     border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 1px;
+    border-color: #888888;
+    border-width: 0.5px;
+    border-radius: 10px;
+    box-shadow: 2px 6px 5px #888888;
     padding-top: 0;
-    justify-content: center;
+    justify-content: flex-start;
     padding-left: 20px;
     padding-right: 20px;
+    background-color: rgb(178, 255, 229);
+}
+
+.choice-img {
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: contain;
 }
 
 .round-result {
@@ -32,11 +48,12 @@
     width: 200px;
     height: 200px;
     justify-content: center;
+    align-items: center;
 }
 
 .winner {
     display: flex;
-    height: 50px;
+    height: 20px;
 }
 
 .rps-container {
@@ -48,8 +65,10 @@
 
 .rps-container button {
     width: 150px;
-    background-color: aquamarine;
+    background-color: rgb(112, 170, 151);
     padding: 10px;
+    border-radius: 10px;
+
 }
 
 .reset-container {
@@ -61,11 +80,4 @@
 .score-container {
     display: flex;
     gap: 2in;
-}
-
-.choice-img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-bottom: 10px;
 }

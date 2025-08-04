@@ -15,17 +15,17 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound(humanChoice, computerChoice){
+function playRound(playerChoice, computerChoice){
 
-    if (humanChoice === computerChoice){
+    if (playerChoice === computerChoice){
         document.querySelector(".winner p").textContent = "Tie!";
     }
     else if (
-        humanChoice === "Rock" && computerChoice === "Scissors" ||
-        humanChoice === "Paper" && computerChoice === "Rock" ||
-        humanChoice === "Scissors" && computerChoice === "Paper") {
+        playerChoice === "Rock" && computerChoice === "Scissors" ||
+        playerChoice === "Paper" && computerChoice === "Rock" ||
+        playerChoice === "Scissors" && computerChoice === "Paper") {
             document.querySelector(".winner p").textContent = "You won!";
-            humanScore++;
+            playerScore++;
         }
     else {
         document.querySelector(".winner p").textContent = "Computer won!";
@@ -35,16 +35,16 @@ function playRound(humanChoice, computerChoice){
     round++;
 
     if (
-        humanChoice === "Rock" && computerChoice === "Scissors" ||
-        humanChoice === "Paper" && computerChoice === "Rock" ||
-        humanChoice === "Scissors" && computerChoice === "Paper"){
-            document.querySelector(".round-result p").textContent = `${humanChoice} beats ${computerChoice}`
+        playerChoice === "Rock" && computerChoice === "Scissors" ||
+        playerChoice === "Paper" && computerChoice === "Rock" ||
+        playerChoice === "Scissors" && computerChoice === "Paper"){
+            document.querySelector(".round-result p").textContent = `${playerChoice} beats ${computerChoice}`
     }
     else if (
-        computerChoice === "Rock" && humanChoice === "Scissors" ||
-        computerChoice === "Paper" && humanChoice === "Rock" ||
-        computerChoice === "Scissors" && humanChoice === "Paper") {
-            document.querySelector(".round-result p").textContent = `${computerChoice} beats ${humanChoice}`
+        computerChoice === "Rock" && playerChoice === "Scissors" ||
+        computerChoice === "Paper" && playerChoice === "Rock" ||
+        computerChoice === "Scissors" && playerChoice === "Paper") {
+            document.querySelector(".round-result p").textContent = `${computerChoice} beats ${playerChoice}`
     }
     else {
         document.querySelector(".round-result p").textContent = `It's a tie!`
@@ -52,7 +52,7 @@ function playRound(humanChoice, computerChoice){
 }
 
 let round = 0;
-let humanScore = 0;
+let playerScore = 0;
 let computerScore = 0;
 
 function clickPick() {
@@ -61,27 +61,32 @@ function clickPick() {
     document.getElementById("scissors").addEventListener("click", () => playFullRound("Scissors"));
 }
 
-function playFullRound (humanChoice) {
-    if (humanScore === 5 || computerScore === 5) return;
+function playFullRound (playerChoice) {
+    if (playerScore === 5 || computerScore === 5) return;
     
     const computerChoice = getComputerChoice();
-    const roundResult = playRound(humanChoice, computerChoice);
+    const roundResult = playRound(playerChoice, computerChoice);
 
-    document.querySelector(".human-pick p").textContent = `Player ${humanChoice}`
+    document.querySelector(".player-pick p").textContent = `Player ${playerChoice}`
     document.querySelector(".computer-pick p").textContent = `Computer ${computerChoice}`
     
-    // const playerPickContainer  = document.querySelector(".human-pick")
-    // const playerPickIg = `
-    //     <img src="${humanChoice.toLowerCase()}.jpeg" alt="${humanChoice} class="choice-img">
-    //     <p> Player ${humanChoice}`
-    // playerPickContainer.innerHTML = playerPickIg
+    const playerPickContainer  = document.querySelector(".player-pick")
+    const playerPickIg = `
+        <img src="img/${playerChoice.toLowerCase()}_p.png" alt="${playerChoice}" class="choice-img">
+        <p style="display: none"> Player ${playerChoice}`
+    playerPickContainer.innerHTML = playerPickIg
 
-    document.querySelector(".human-score p").textContent = `Player Score: ${humanScore}`
+    const computerPickContainer  = document.querySelector(".computer-pick")
+    const computerPickIg = `
+        <img src="img/${computerChoice.toLowerCase()}_c.png" alt="${computerChoice}" class="choice-img">
+        <p style="display: none"> Computer ${computerChoice}`
+    computerPickContainer.innerHTML = computerPickIg
+
+    document.querySelector(".player-score p").textContent = `Player Score: ${playerScore}`
     document.querySelector(".computer-score p").textContent = `Computer Score: ${computerScore}`
-    // document.querySelector(".winner p").textContent = finalMessage;
 
-    if (humanScore === 5 || computerScore === 5) {
-        const finalMessage = humanScore === 5 ? "Player wins the game!" : "Computer wins the game!"
+    if (playerScore === 5 || computerScore === 5) {
+        const finalMessage = playerScore === 5 ? "Player wins the game!" : "Computer wins the game!"
         document.querySelector(".winner p").textContent = finalMessage
     }
 }
@@ -89,42 +94,17 @@ function playFullRound (humanChoice) {
 clickPick()
 
 document.querySelector("#reset").addEventListener("click", () => {
-    humanScore = 0
+    playerScore = 0
     computerScore = 0
     round = 0
 
-    document.querySelector(".human-pick p").textContent = `Player`
+    document.querySelector(".player-pick p").textContent = `Player`
     document.querySelector(".computer-pick p").textContent = `Computer`
-    document.querySelector(".human-score p").textContent = `Player Score: 0`
+    document.querySelector(".player-score p").textContent = `Player Score: 0`
     document.querySelector(".computer-score p").textContent = `Computer Score: 0`
     document.querySelector(".round-result p").textContent = ""
     document.querySelector(".winner p").textContent = ""
 
+    document.querySelector(".player-pick").innerHTML = `<p> </p>`
+    document.querySelector(".computer-pick").innerHTML = `<p> </p>`
 })
-
-
-// function setupGame() {
-//     document.getElementById("rock").addEventListener("click", function() {
-//         const humanChoice = "Rock"
-//         const computerChoice = getComputerChoice()
-//         playRound(humanChoice, computerChoice)
-//         document.querySelector(".human-pick p").textContent = `You picked: ${humanChoice}`;
-//         document.querySelector(".computer-pick p").textContent = `Computer picked: ${computerChoice}`;
-//     });
-
-//     document.getElementById("paper").addEventListener("click", function() {
-//         const humanChoice = "Paper"
-//         const computerChoice = getComputerChoice()
-//         playRound(humanChoice, computerChoice)
-//         document.querySelector(".human-pick p").textContent = `You picked: ${humanChoice}`;
-//         document.querySelector(".computer-pick p").textContent = `Computer picked: ${computerChoice}`;
-//     });
-
-//     document.getElementById("scissors").addEventListener("click", function() {
-//         const humanChoice = "Scissors"
-//         const computerChoice = getComputerChoice()
-//         playRound(humanChoice, computerChoice)
-//         document.querySelector(".human-pick p").textContent = `You picked: ${humanChoice}`;
-//         document.querySelector(".computer-pick p").textContent = `Computer picked: ${computerChoice}`;
-//     });
-// }
