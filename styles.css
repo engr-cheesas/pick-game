@@ -1,0 +1,71 @@
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.results-container {
+    display: flex;
+    gap: 1in;
+    margin: 30px;
+}
+
+.human-pick, .computer-pick {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 1px;
+    padding-top: 0;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.round-result {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+}
+
+.winner {
+    display: flex;
+    height: 50px;
+}
+
+.rps-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1in;
+}
+
+.rps-container button {
+    width: 150px;
+    background-color: aquamarine;
+    padding: 10px;
+}
+
+.reset-container {
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+}
+
+.score-container {
+    display: flex;
+    gap: 2in;
+}
+
+.choice-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
